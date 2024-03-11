@@ -375,7 +375,7 @@ Flexible, Incremental Migration: IPv6-Mostly allows for gradual device migration
 <section anchor="rollout">
 <name>Incremental Rollout Considerations</name>
 <t>
-Migrating endpoints to IPv6-only fundamentally changes network dynamics by removing the IPv4 safety net. This includes the masking effect of Happy Eyeballs. IPv6 connectivity issues become far more prominent, including those previously hidden within dual-stack environments. Operators should be prepared to discover and troubleshoot issues in both endpoints and network infrastructure, even if the dual-stack network appeared problem-free.
+Migrating endpoints to IPv6-only fundamentally changes network dynamics by removing the safety netw of IPv4. This includes the masking effect of Happy Eyeballs. IPv6 connectivity issues become far more prominent, including those previously hidden within dual-stack environments. Operators should be prepared to discover and troubleshoot issues in both endpoints and network infrastructure, even if the dual-stack network appeared problem-free. 
 </t>
 <t>
 Some rollout considerations are discussed in the following sections.
@@ -413,7 +413,7 @@ For quick rollback, the administrator SHOULD start with a minimal Option 108 val
 <name>Opt-In and Opt-Out Modes</name>
 
 <t>
-Before user-facing deployment, the administrator SHOULD consider a dedicated IPv6-mostly proof-of-concept network for early adopters. While this temporarily sacrifices some IPv6-mostly benefits (<xref target="vsv6only"/>), it provides valuable operational experience and early issue detection.
+Before user-facing deployment, the administrator SHOULD consider a dedicated IPv6-mostly proof-of-concept network for early adopters. While this temporarily sacrifices some IPv6-mostly benefits (<xref target="vsv6only"/>), it provides valuable operational experience and early issue detection. 
   </t>
 <ul>
 <li>
@@ -479,12 +479,12 @@ It's crucial to note that these issues likely pre-exist in dual-stack networks, 
 <name>Hosts with Disabled or Disfunctional IPv6</name>
 <t>
 Historically, tech support often advised disabling IPv6 as a quick workaround, leading to devices with disabled IPv6.
-Similarly, corporate IT may have disabled or filtered IPv6 under the assumption that it's not widely used.
-Such endpoints requesting Option 108 will fail to connect in an IPv6-mostly network, as they won't receive IPv4 addresses and Ipv6 is disabled.
+Similarly, corporate IT may have disabled or filtered IPv6 under the assumption that it's not widely used. Additionally, filtering mechanisms either in the host system themselves (i.e., host based firewalls) or within the network path may be incorrectly disallowing necessary components of IPv6 to properly communicate and function, thereby causing behavior manifesting as broken IPv6 connectivity. Examples of such are filtering of multicast or requisite ICMPv6 components necessary for proper functionality of the protocol stack. 
+Such endpoints requesting Option 108 will fail to connect in an IPv6-mostly network, as they won't receive IPv4 addresses and IPv6 is disabled. 
 </t>
 
 <t>
-Administrators controlling endpoints SHOULD ensure those endpoints have IPv6 enabled and operational before migrating the network to IPv6-mostly mode. 
+Administrators controlling endpoints SHOULD ensure those endpoints have IPv6 enabled and operational before migrating the network to IPv6-mostly mode.
 </t>
 
 </section>
@@ -508,8 +508,8 @@ Provides downstream systems with IPv6 addresses and native connectivity.
 </li>
 <li>
 <t>
-Enabling the CLAT function on the endpoint. This scenario is similar to the Wireline Network Architecture described in Section 4.1 of <xref target="RFC6877"/>. The downstream systems would receive IPv4 addresses and their IPv4 traffic would be translated to IPv6 by the endpoint. However thios approach leads to the downstream systems using IPv4 only and not benefiting from end2end IPv6 connectivity. 
-To enable IPv6 benefits, combine this with IPv6 Prefix Delegation as above.
+Enabling the CLAT function on the endpoint. This scenario is similar to the Wireline Network Architecture described in Section 4.1 of <xref target="RFC6877"/>. The downstream systems would receive IPv4 addresses and their IPv4 traffic would be translated to IPv6 by the endpoint. However this approach leads to the downstream systems using IPv4 only and not benefiting from end2end IPv6 connectivity. 
+To enable IPv6 benefits, combine this with IPv6 Prefix Delegation as referenced above.
 </t>
 </li>
 <li>
